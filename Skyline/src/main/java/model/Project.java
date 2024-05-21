@@ -3,54 +3,61 @@ package model;
 import java.util.Date;
 import java.util.List;
 
-public class Project {
 
-    private int id_project;
+public class Project {
+    private int id;
     private String name;
     private String description;
-    private Date prStartDate;
-    private Date prEndDate;
+    private Date startDate;
+    private Date endDate;
     private double budget;
-    private List<Task> tasks;
 
+    private List<Task> tasks;
 
     public Project() {
     }
 
-    public Project(String name, String description, Date prStartDate, Date prEndDate, double budget, List<Task> tasks) {
+    public Project(int id, String name, String description, Date startDate, Date endDate, double budget, List<Task> tasks) {
+        this.id = id;
         this.name = name;
         this.description = description;
-        this.prStartDate = prStartDate;
-        this.prEndDate = prEndDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.budget = budget;
         this.tasks = tasks;
     }
 
-    public Project(int id_project, String name, String description, Date prStartDate, Date prEndDate, double budget, List<Task> tasks) {
-        this.id_project = id_project;
+    public Project(String name, String description, Date startDate, Date endDate, double budget, List<Task> tasks) {
         this.name = name;
         this.description = description;
-        this.prStartDate = prStartDate;
-        this.prEndDate = prEndDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.budget = budget;
         this.tasks = tasks;
     }
 
-    public Project(String name, String description, Date prStartDate, Date prEndDate, double budget) {
+    public Project(String name, String description, Date startDate, Date endDate, double budget) {
         this.name = name;
         this.description = description;
-        this.prStartDate = prStartDate;
-        this.prEndDate = prEndDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.budget = budget;
     }
 
-
-    public int getId_project() {
-        return id_project;
+    public List<Task> getTasks() {
+        return tasks;
     }
 
-    public void setId_project(int id_project) {
-        this.id_project = id_project;
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -69,20 +76,20 @@ public class Project {
         this.description = description;
     }
 
-    public Date getPrStartDate() {
-        return prStartDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setPrStartDate(Date prStartDate) {
-        this.prStartDate = prStartDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getPrEndDate() {
-        return prEndDate;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setPrEndDate(Date prEndDate) {
-        this.prEndDate = prEndDate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public double getBudget() {
@@ -91,13 +98,5 @@ public class Project {
 
     public void setBudget(double budget) {
         this.budget = budget;
-    }
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
     }
 }
