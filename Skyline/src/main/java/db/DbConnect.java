@@ -8,7 +8,7 @@ public class DbConnect {
 
     private static final String HOST = "localhost";
     private static final int PORT = 5432;
-    private static final String DB_NAME = "BookStore";
+    private static final String DB_NAME = "SkyLine";
     private static final String USERNAME = "postgres";
     private static final String PASSWORD = "admin";
 
