@@ -1,0 +1,105 @@
+package web;
+
+import dao.ProjectDAO;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import model.Project;
+import services.DateCasting;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
+
+@WebServlet("/Project")
+public class ProjectManagement extends HttpServlet {
+
+
+    private ProjectDAO projectDao;
+    Project project;
+    List projects = null;
+
+
+    public void init(ServletConfig sc) throws ServletException {
+        try {
+            projectDao = new ProjectDAO();
+           } catch (Exception e) {
+            throw new RuntimeException(e);
+          }
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
+        double budget = Double.parseDouble(request.getParameter("budget"));
+
+
+
+
+
+        project = new Project(name,description, DateCasting.convertStringToDate(startDate,"yyyy-MM-dd"), DateCasting.convertStringToDate(startDate,"yyyy-MM-dd"),budget);
+        try {
+
+            projectDao.addProject(project);
+            response.sendRedirect("ShowProject");
+
+        } catch (SQLException se) {
+            System.out.println(se.getMessage());
+        }
+
+    }
+
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+
+        int id = Integer.parseInt(request.getParameter("TheProjectId"));
+        String action = request.getParameter("action");
+
+        switch (action)
+        {
+            case "delete":
+                try {
+                    projectDao.deleteProject(id);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                RequestDispatcher SHOWAFTER = request.getRequestDispatcher("Projects.jsp");
+                try {
+                    request.setAttribute("projects", projectDao.getAllProjects());
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                SHOWAFTER.forward(request, response);
+
+                break;
+            case "update":
+                try {
+                    request.getServletContext().setAttribute("showUpdateproject", projectDao.getProjectById(id));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                response.sendRedirect("UpdateProjectForm.jsp?id=" + id);
+                break;
+
+        }
+
+
+
+
+    }
+}
