@@ -40,25 +40,47 @@ public class ProjectManagement extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String action = request.getParameter("action");
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
         double budget = Double.parseDouble(request.getParameter("budget"));
 
+        switch (action)
+        {
+            case "AddProject":
+                try
+                {
+                    project = new Project(name, description, DateCasting.convertStringToDate(startDate, "yyyy-MM-dd"), DateCasting.convertStringToDate(startDate, "yyyy-MM-dd"), budget);
+                    projectDao.addProject(project);
+                    response.sendRedirect("ShowProject");
 
+                } catch (SQLException se) {
+                    System.out.println(se.getMessage());
+                }
+                break;
 
+            case "AddToUpdate":
+                try
+                {
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    project = new Project(id,name, description, DateCasting.convertStringToDate(startDate, "yyyy-MM-dd"), DateCasting.convertStringToDate(startDate, "yyyy-MM-dd"), budget);
+                    projectDao.updateProject(project);
+                    response.sendRedirect("ShowProject");
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
 
-
-        project = new Project(name,description, DateCasting.convertStringToDate(startDate,"yyyy-MM-dd"), DateCasting.convertStringToDate(startDate,"yyyy-MM-dd"),budget);
-        try {
-
-            projectDao.addProject(project);
-            response.sendRedirect("ShowProject");
-
-        } catch (SQLException se) {
-            System.out.println(se.getMessage());
         }
+
+
+
+
+
+
+
 
     }
 

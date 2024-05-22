@@ -78,6 +78,7 @@
     <form action="Project" method="POST">
         <div class="form-group">
             <label for="name">Name:</label>
+            <input type="hidden" name="action" value="AddProject">
             <input type="text" id="name" name="name" required>
         </div>
         <div class="form-group">

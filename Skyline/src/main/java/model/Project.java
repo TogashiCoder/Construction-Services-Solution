@@ -27,6 +27,15 @@ public class Project {
         this.tasks = tasks;
     }
 
+    public Project(int id, String name, String description, Date startDate, Date endDate, double budget) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.budget = budget;
+    }
+
     public Project(String name, String description, Date startDate, Date endDate, double budget, List<Task> tasks) {
         this.name = name;
         this.description = description;

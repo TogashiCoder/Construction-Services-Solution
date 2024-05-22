@@ -88,9 +88,11 @@
 <div class="container">
     <h2 style="text-align: center;">Project Form</h2>
 
-    <form action="#" method="POST">
+    <form action="Project" method="POST">
         <div class="form-group">
             <label for="name">Name:</label>
+            <input type="hidden" name="action" value="AddToUpdate">
+            <input type="hidden" name="id" value="<%=project.getId()%>">
             <input type="text" id="name" name="name" required value="<%=project.getName()%>">
         </div>
         <div class="form-group">

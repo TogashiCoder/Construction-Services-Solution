@@ -15,7 +15,5 @@ public class App {
                 projectDAO.deleteProject(3);
                 System.out.println("Project deleted successfully!");
 
-
-
     }
 }
