@@ -103,19 +103,19 @@ public class ProjectManagement extends HttpServlet {
                 RequestDispatcher SHOWAFTER = request.getRequestDispatcher("Projects.jsp");
                 try {
                     request.setAttribute("projects", projectDao.getAllProjects());
+                    SHOWAFTER.forward(request, response);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-                SHOWAFTER.forward(request, response);
 
                 break;
             case "update":
                 try {
                     request.getServletContext().setAttribute("showUpdateproject", projectDao.getProjectById(id));
+                    response.sendRedirect("UpdateProjectForm.jsp?id=" + id);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-                response.sendRedirect("UpdateProjectForm.jsp?id=" + id);
                 break;
 
         }

@@ -55,7 +55,7 @@
     <div class="relative z-[51] -mx-5 mb-10 mt-12 h-[70px] border-b border-white/[0.08] px-4 sm:-mx-8 sm:px-8 md:mx-0 md:mb-8 md:mt-0 md:px-6">
         <div class="flex h-full items-center">
             <!-- BEGIN: Logo -->
-            <a href="Dashboard.html" class="-intro-x hidden md:flex">
+            <a href="dashboard.jsp" class="-intro-x hidden md:flex">
                 <img class="w-6" src="images/logo.png" alt="TogashiCoder" />
                 <span class="ml-3 text-lg text-white"> Skyline </span>
             </a>
@@ -237,15 +237,29 @@
                                         <c:out value="${project.name}"/>
                                     </a>
                                     <div class="mt-0.5 whitespace-nowrap text-xs text-slate-500">
-                                        Tasks : <a href="#"><i class="fa-solid fa-eye"
-                                                               style="font-size: 15px; margin-right: 5px; transition: transform 0.3s, color 0.3s;"
-                                                               onmouseover="this.style.transform='scale(1.2)'; this.style.color='#1A3693';"
-                                                               onmouseout="this.style.transform='scale(1)'; this.style.color='';"></i></a>
-                                        <a href="#">
-                                            <i class="fa-solid fa-plus" style="font-size: 15px; margin-right: 5px; transition: transform 0.3s, color 0.3s;"
-                                               onmouseover="this.style.transform='scale(1.2)'; this.style.color='#a7e8a3';"
-                                               onmouseout="this.style.transform='scale(1)'; this.style.color='';"></i>
-                                        </a>
+                                        <form action="Tasks" method="get" style="display: inline-block">
+                                            <input type="hidden" name="action" value="display">
+                                            <input type="hidden" name="TheProjectId" value="${project.id}">
+                                            Tasks:
+                                            <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
+                                                <i class="fa-solid fa-eye"
+                                                   style="font-size: 15px; margin-right: 5px; transition: transform 0.3s, color 0.3s;"
+                                                   onmouseover="this.style.transform='scale(1.2)'; this.style.color='#1A3693';"
+                                                   onmouseout="this.style.transform='scale(1)'; this.style.color='';">
+                                                </i>
+                                            </button>
+                                        </form>
+                                        <form action="addTask.jsp" method="get" style="display: inline-block">
+                                            <input type="hidden" name="action" value="addTask">
+                                            <input type="hidden" name="TheProjectId" value="${project.id}">
+                                            <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
+                                                <i class="fa-solid fa-plus" style="font-size: 15px; margin-right: 5px; transition: transform 0.3s, color 0.3s;"
+                                                   onmouseover="this.style.transform='scale(1.2)'; this.style.color='#a7e8a3';"
+                                                   onmouseout="this.style.transform='scale(1)'; this.style.color='';">
+                                                </i>
+                                            </button>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>

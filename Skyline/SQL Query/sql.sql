@@ -14,14 +14,15 @@ CREATE TABLE tasks (
                        start_date DATE,
                        end_date DATE,
                        status VARCHAR(20),
-                       resources TEXT,
-                       FOREIGN KEY (project_id) REFERENCES projects(id)
+                       FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE resources (
                            id SERIAL PRIMARY KEY,
+                           task_id INT,
                            name VARCHAR(100),
                            type VARCHAR(50),
                            quantity INT,
-                           supplier_info TEXT
+                           supplier_info TEXT,
+                           FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE ON UPDATE CASCADE
 );

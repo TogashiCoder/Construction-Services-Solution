@@ -35,6 +35,13 @@ public class Task {
         this.resources = resources;
     }
 
+    public Task(int projectId, String description, Date startDate, Date endDate, String status) {
+        this.projectId = projectId;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.status = status;
+    }
 
     public Task(String description, Date startDate, Date endDate, String status) {
         this.description = description;
