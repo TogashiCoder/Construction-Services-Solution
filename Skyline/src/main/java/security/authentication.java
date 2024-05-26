@@ -26,7 +26,7 @@ public class authentication extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        try { // try catch for get Connection
+        try {
             connection = DbConnect.getConnection();
         } catch (Exception e) {
             System.err.println("Error creating MemberDao: " + e.getMessage());

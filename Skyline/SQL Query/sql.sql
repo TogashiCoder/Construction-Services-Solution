@@ -26,3 +26,14 @@ CREATE TABLE resources (
                            supplier_info TEXT,
                            FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
+CREATE TABLE admin (
+                       id SERIAL PRIMARY KEY,
+                       username VARCHAR(255) UNIQUE NOT NULL,
+                       password VARCHAR(255) NOT NULL
+);
+
+
+INSERT INTO admin (username, password) VALUES ('Taoufik', 'Taoufik');
+INSERT INTO admin (username, password) VALUES ('Admin', 'Taoufik');
