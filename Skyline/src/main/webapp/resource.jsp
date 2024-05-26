@@ -118,15 +118,18 @@
     <!-- BEGIN: Content -->
     <div
             class="rounded-[30px] md:rounded-[35px_35px_0px_0px] min-w-0 min-h-screen max-w-full md:max-w-none bg-slate-100 flex-1 pb-10 px-4 md:px-6 relative mt-8 dark:bg-darkmode-700 before:content-[''] before:w-full before:h-px before:block after:content-[''] after:z-[-1] after:rounded-[40px_40px_0px_0px] after:w-[97%] after:inset-y-0 after:absolute after:left-0 after:right-0 after:bg-white/10 after:-mt-4 after:mx-auto after:dark:bg-darkmode-400/50">
-        <h2 class="intro-y mt-10 text-lg font-medium">Project List</h2>
+        <h2 class="intro-y mt-10 text-lg font-medium">resources List</h2>
         <div class="mt-5 grid grid-cols-12 gap-6">
             <div class="intro-y col-span-12 mt-2 flex flex-wrap items-center xl:flex-nowrap">
 
-                <!-- add new project -->
+                <!-- add new Resource -->
 
-                <button data-tw-merge="" class="transition duration-200 border inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary mr-2 shadow-md">
-                    <a href="AddProject.jsp">Add New Project</a>
-                </button>
+                <form action="AddResource.jsp">
+                    <input type="hidden"  name="TheTaskId" value="${task.id}">
+                    <button type="submit" class="transition duration-200 border inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary mr-2 shadow-md">
+                        Add New Resource
+                    </button>
+                </form>
                 <div data-tw-merge="" data-tw-placement="bottom-end" class="dropdown relative">
                     <button data-tw-merge="" data-tw-toggle="dropdown" aria-expanded="false"
                             class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed !box px-2">
@@ -191,22 +194,16 @@
                                    class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer rounded focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50" />
                         </th>
                         <th data-tw-merge=""class="font-medium px-5 py-3 dark:border-darkmode-300 whitespace-nowrap border-b-0">
-                            Project Name
+                            Resource Name
                         </th>
                         <th data-tw-merge=""class="font-medium px-5 py-3 dark:border-darkmode-300 whitespace-nowrap border-b-0 text-center">
-                            Description
+                            Type
                         </th>
                         <th data-tw-merge=""class="font-medium px-5 py-3 dark:border-darkmode-300 whitespace-nowrap border-b-0 text-center">
-                            StartDate
+                            quantity
                         </th>
                         <th data-tw-merge=""class="font-medium px-5 py-3 dark:border-darkmode-300 whitespace-nowrap border-b-0 text-center">
-                            EndDate
-                        </th>
-                        <th data-tw-merge=""class="font-medium px-5 py-3 dark:border-darkmode-300 whitespace-nowrap border-b-0 text-center">
-                            Budget
-                        </th>
-                        <th data-tw-merge=""class="font-medium px-5 py-3 dark:border-darkmode-300 whitespace-nowrap border-b-0 text-center">
-                            STATUS
+                            supplier Name
                         </th>
                         <th data-tw-merge=""class="font-medium px-5 py-3 dark:border-darkmode-300 whitespace-nowrap border-b-0 text-center">
                             ACTIONS
@@ -215,111 +212,76 @@
                     </thead>
                     <tbody>
                     <!-- start project div  -->
-        <c:forEach items="${projects}" var="project">
-                    <tr data-tw-merge="" class="intro-x">
-                        <td data-tw-merge=""
-                            class="px-5 py-5 border-b dark:border-darkmode-300 box w-10 whitespace-nowrap rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                            <input data-tw-merge="" type="checkbox"
-                                   class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer rounded focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50" />
-                        </td>
-                        <td data-tw-merge=""
-                            class="px-5 py-3 border-b dark:border-darkmode-300 box whitespace-nowrap rounded-l-none rounded-r-none border-x-0 !py-3.5 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                            <div class="flex items-center">
-                                <div class="image-fit zoom-in h-9 w-9">
-                                    <img data-placement="top" title="Uploaded at 22 September 2020"
-                                         src="images/buildingProject.png"
-                                         alt="Midone - Tailwind Admin Dashboard Template"
-                                         class="tooltip cursor-pointer rounded-lg border-white shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
-                                </div>
-                                <div class="ml-4">
-                                    <a class="whitespace-nowrap font-medium" href="#">
-                                        <!-- NAME: PROJECT -->
-                                        <c:out value="${project.name}"/>
-                                    </a>
-                                    <div class="mt-0.5 whitespace-nowrap text-xs text-slate-500">
-                                        <form action="Tasks" method="get" style="display: inline-block">
-                                            <input type="hidden" name="action" value="display">
-                                            <input type="hidden" name="TheProjectId" value="${project.id}">
-                                            Tasks:
-                                            <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
-                                                <i class="fa-solid fa-eye"
-                                                   style="font-size: 15px; margin-right: 5px; transition: transform 0.3s, color 0.3s;"
-                                                   onmouseover="this.style.transform='scale(1.2)'; this.style.color='#1A3693';"
-                                                   onmouseout="this.style.transform='scale(1)'; this.style.color='';">
-                                                </i>
-                                            </button>
-                                        </form>
-                                        <form action="addTask.jsp" method="get" style="display: inline-block">
-                                            <input type="hidden" name="action" value="addTask">
-                                            <input type="hidden" name="TheProjectId" value="${project.id}">
-                                            <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
-                                                <i class="fa-solid fa-plus" style="font-size: 15px; margin-right: 5px; transition: transform 0.3s, color 0.3s;"
-                                                   onmouseover="this.style.transform='scale(1.2)'; this.style.color='#a7e8a3';"
-                                                   onmouseout="this.style.transform='scale(1)'; this.style.color='';">
-                                                </i>
-                                            </button>
-                                        </form>
-
+                    <c:forEach items="${resources}" var="resource">
+                        <tr data-tw-merge="" class="intro-x">
+                            <td data-tw-merge=""
+                                class="px-5 py-5 border-b dark:border-darkmode-300 box w-10 whitespace-nowrap rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+                                <input data-tw-merge="" type="checkbox"
+                                       class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer rounded focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50" />
+                            </td>
+                            <td data-tw-merge=""
+                                class="px-5 py-3 border-b dark:border-darkmode-300 box whitespace-nowrap rounded-l-none rounded-r-none border-x-0 !py-3.5 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+                                <div class="flex items-center">
+                                    <div class="image-fit zoom-in h-9 w-9">
+                                        <img data-placement="top" title="Uploaded at 22 September 2020"
+                                             src="images/buildingProject.png"
+                                             alt="Midone - Tailwind Admin Dashboard Template"
+                                             class="tooltip cursor-pointer rounded-lg border-white shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" />
+                                    </div>
+                                    <div class="ml-4">
+                                        <a class="whitespace-nowrap font-medium" href="#">
+                                            <!-- Resource Name -->
+                                            <c:out value="${resource.name}"/>
+                                        </a>
+                                        <div class="mt-0.5 whitespace-nowrap text-xs text-slate-500">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td data-tw-merge=""
-                            class="px-5 py-3 border-b dark:border-darkmode-300 box whitespace-nowrap rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                            <a class="flex items-center justify-center underline decoration-dotted" href="#">
-                                <!-- Description  -->
-                                <c:out value="${project.description}"/>
-                            </a>
-                        </td>
-                        <td data-tw-merge=""
-                            class="px-5 py-3 border-b dark:border-darkmode-300 box whitespace-nowrap rounded-l-none rounded-r-none border-x-0 text-center shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                            <!-- StartDate -->
-                            <c:out value="${project.startDate}"/>
-                        </td>
-                        <td data-tw-merge=""
-                            class="px-5 py-3 border-b dark:border-darkmode-300 box whitespace-nowrap rounded-l-none rounded-r-none border-x-0 text-center shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                            <!-- EndDate -->
-                            <c:out value="${project.endDate}"/>
-                        </td>
-
-                        <td data-tw-merge=""
-                            class="px-5 py-3 border-b dark:border-darkmode-300 box whitespace-nowrap rounded-l-none rounded-r-none border-x-0 text-center shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                            <!-- Budget-->
-                            <c:out value="${project.budget}"/> <i class="fa-solid fa-dollar-sign" style="color: #63E6BE;"></i>
-                        </td>
-                        <td data-tw-merge=""
-                            class="px-5 py-3 border-b dark:border-darkmode-300 box w-40 whitespace-nowrap rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                            <div class="flex items-center justify-center text-success">
-                                <i data-tw-merge="" data-lucide="check-square" class="stroke-1.5 mr-2 h-4 w-4"></i>
-                                <!-- Status:Area -->
-                                Active
-                            </div>
-                        </td>
-                        <td data-tw-merge=""
-                            class="px-5 py-3 border-b dark:border-darkmode-300 box w-56 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600 before:absolute before:inset-y-0 before:left-0 before:my-auto before:block before:h-8 before:w-px before:bg-slate-200 before:dark:bg-darkmode-400">
-                            <div class="flex items-center justify-center">
-                                <form action="Project" method="get">
-                                    <input type="hidden" name="action" value="update">
-                                    <input type="hidden" name="TheProjectId" value="${project.id}">
-                                    <button type="submit" class="mr-3 flex items-center">
-                                        <i data-tw-merge="" data-lucide="check-square" class="stroke-1.5 mr-1 h-4 w-4"></i>
-                                        Edit
-                                    </button>
-                                </form>
-                                <form action="Project" method="get">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="TheProjectId" value="${project.id}">
-                                    <button type="submit" class="flex items-center text-danger" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
-                                        <i data-tw-merge="" data-lucide="trash" class="stroke-1.5 mr-1 h-4 w-4"></i>
-                                        Delete
-                                    </button>
-                                </form>
-
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- end  project div  -->
-        </c:forEach>
+                            </td>
+                            <td data-tw-merge=""
+                                class="px-5 py-3 border-b dark:border-darkmode-300 box whitespace-nowrap rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+                                <a class="flex items-center justify-center underline decoration-dotted" href="#">
+                                    <!-- Type  -->
+                                    <c:out value="${resource.type}"/>
+                                </a>
+                            </td>
+                            <td data-tw-merge=""
+                                class="px-5 py-3 border-b dark:border-darkmode-300 box whitespace-nowrap rounded-l-none rounded-r-none border-x-0 text-center shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+                                <!-- quantity -->
+                                <c:out value="${resource.quantity}"/>
+                            </td>
+                            <td data-tw-merge=""
+                                class="px-5 py-3 border-b dark:border-darkmode-300 box whitespace-nowrap rounded-l-none rounded-r-none border-x-0 text-center shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+                                <!-- supplier Name -->
+                                <c:out value="${resource.supplierInfo}"/>
+                            </td>
+                            <!-- Action  -->
+                            <td data-tw-merge=""
+                                class="px-5 py-3 border-b dark:border-darkmode-300 box w-56 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600 before:absolute before:inset-y-0 before:left-0 before:my-auto before:block before:h-8 before:w-px before:bg-slate-200 before:dark:bg-darkmode-400">
+                                <div class="flex items-center justify-center">
+                                    <form action="resourceServ" method="get">
+                                        <input type="hidden" name="action" value="update">
+                                        <input type="hidden" name="TheTaskId" value="${task.id}">
+                                        <input type="hidden" name="TheResourceID" value="${resource.id}">
+                                        <button type="submit" class="mr-3 flex items-center">
+                                            <i data-tw-merge="" data-lucide="check-square" class="stroke-1.5 mr-1 h-4 w-4"></i>
+                                            Edit
+                                        </button>
+                                    </form>
+                                    <form action="resourceServ" method="get">
+                                        <input type="hidden" name="action" value="delete">
+                                        <input type="hidden" name="TheTaskId" value="${task.id}">
+                                        <input type="hidden" name="TheResource" value="${resource.id}">
+                                        <button type="submit" class="flex items-center text-danger" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                            <i data-tw-merge="" data-lucide="trash" class="stroke-1.5 mr-1 h-4 w-4"></i>
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- end  project div  -->
+                    </c:forEach>
 
                     </tbody>
                 </table>

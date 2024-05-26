@@ -44,17 +44,4 @@ public class ProjectOpener extends HttpServlet {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

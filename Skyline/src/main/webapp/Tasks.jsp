@@ -142,7 +142,7 @@
                     <div class="flex items-start px-5 pt-5">
                         <div class="flex w-full flex-col items-center lg:flex-row">
                             <div class="image-fit h-16 w-16">
-                                <img class="rounded-full" src="tailwind/dist/images/fakers/profile-12.jpg" alt="TogashiCoder">
+                                <img class="rounded-full" src="images/planning.png" alt="TogashiCoder">
                             </div>
                             <div class="mt-3 text-center lg:ml-4 lg:mt-0 lg:text-left">
                                 <a class="font-medium" href="#">
@@ -206,7 +206,13 @@
                         </div>
                     </div>
                     <div class="border-t border-slate-200/60 p-5 text-center dark:border-darkmode-400 lg:text-right">
-
+                        <form action="resourceServ" method="get">
+                            <input type="hidden" name="action" value="display">
+                            <input type="hidden" name="TheTaskId" value="${task.id}">
+                            <button type="submit">
+                                Show resources
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
